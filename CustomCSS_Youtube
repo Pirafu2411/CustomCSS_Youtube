@@ -1,0 +1,89 @@
+/* ------ YouTube ホームを5列で整えるカスタムCSS ------ */
+
+/* グリッド列数を5に固定 */
+ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 5 !important;
+}
+
+/* 各動画カードのサイズを均一化 */
+ytd-rich-item-renderer {
+  max-width: 19.2vw !important;
+  margin-left: 0.4vw !important;
+  margin-right: 0.4vw !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* サムネイル画像の拡大：グレー背景に合わせる */
+ytd-thumbnail {
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+}
+
+/* テキスト部分の埋まりを防止 */
+#video-title {
+  font-size: 14px !important;
+  line-height: 1.3 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  text-overflow: unset !important;
+}
+
+#metadata-line {
+  font-size: 12px !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+/* コンテナの高さ調整で全体を美しく */
+ytd-rich-grid-media {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+}
+
+ytd-thumbnail + div {
+  margin-top: 8px !important;
+}
+
+#details {
+  padding-top: 0px !important;
+}
+/* タイトルを明確に独立表示（2行まで表示） */
+#video-title {
+  display: block !important;
+  font-size: 14px !important;
+  line-height: 1.3 !important;
+  max-height: 2.6em !important; /* 約2行分 */
+  overflow: hidden !important;
+  white-space: normal !important;
+  text-overflow: ellipsis !important;
+}
+
+/* メタ情報（再生数・チャンネル名）を下に縦配置 */
+ytd-video-meta-block {
+  display: block !important;
+  margin-top: 4px !important;
+}
+
+/* メタ情報の行間と文字サイズを最適化 */
+#metadata-line {
+  display: flex !important;
+  flex-direction: column !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  gap: 2px !important;
+  white-space: normal !important;
+}
+@media (max-width: 1400px) {
+  ytd-rich-grid-renderer {
+    --ytd-rich-grid-items-per-row: 4 !important;
+  }
+  ytd-rich-item-renderer {
+    max-width: 24vw !important;
+  }
+}
